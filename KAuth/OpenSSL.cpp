@@ -1,22 +1,30 @@
 #include "include/OpenSSL.h"
 
-OpenSSL::OpenSSL()
+OpenSSL::OpenSSL(QObject *parent):
+    openSSL(new QProcess(parent)),
+    pathOpenSSL("bin/openssl.exe")
 {
 }
 
 OpenSSL::~OpenSSL()
 {
+    delete openSSL;
 }
 
 
-void OpenSSL::open(QString s){
-    QFile file(s);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        throw QString("Impossible d'ouvrir le fichier");
+void OpenSSL::checkPrivateKey(QString s){
 
-    /*QTextStream in(&file);
-    while (!in.atEnd()) {
-        QString line = in.readLine();
-        //process_line(line);
-    }*/
+    QStringList arguments;
+    arguments << "rsa" << "-in" << s << "-check";
+
+    openSSL->start(pathOpenSSL, arguments);
+    if (!openSSL->waitForStarted(-1))
+        throw QString("Impossible de démarrer openssl");
+
+    if (!openSSL->waitForFinished())
+        throw QString("Impossible de finir openssl");
+
+    if(openSSL->readAllStandardOutput().isEmpty()){
+        throw QString("Clef privée invalide");
+    }
 }

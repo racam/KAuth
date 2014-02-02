@@ -17,17 +17,18 @@ Kauth::~Kauth()
 void Kauth::on_openButton_clicked()
 {
     QString s = QFileDialog::getOpenFileName(this, tr("Ouvrir clef privée"), "/home");
-    try{
-        ssl.open(s);
-    }catch(QString const& e){
-        QMessageBox error;
-        error.setText(e);
-        error.setIcon(QMessageBox::Critical);
-        error.exec();
+    if(!s.isNull()){
+        try{
+            ssl.checkPrivateKey(s);
+            this->initSysTray();
+
+        }catch(QString const& e){
+            QMessageBox error;
+            error.setText(e);
+            error.setIcon(QMessageBox::Critical);
+            error.exec();
+        }
     }
-
-    this->initSysTray();
-
 }
 
 void Kauth::initSysTray(){
