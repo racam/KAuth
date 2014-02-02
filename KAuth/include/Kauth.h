@@ -27,6 +27,7 @@ public:
 
 private slots:
     void on_openButton_clicked();
+    void signerPressePapier();
 
 private:
     Ui::MainWindow *ui;
