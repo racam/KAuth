@@ -50,6 +50,9 @@ QString OpenSSL::signer(QString data){
         throw QString("Impossible de finir openssl");
 
     QByteArray signature = openSSL->readAllStandardOutput().toBase64();
+    if(signature.isEmpty())
+        throw QString("Un problème est survenu durant la signature");
+
     return QString(signature);
 }
 

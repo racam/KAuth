@@ -65,7 +65,7 @@ void Kauth::signerPressePapier()
             throw QString("Le presse papier ne contient pas de texte");
 
         QString res = ssl.signer(data);
-        showMessageError(res);
+        pressePapier->setText(res);
 
     }catch(QString const& e){
         showMessageError(e);
