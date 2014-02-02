@@ -8,6 +8,7 @@
 #include <QMenu>
 #include <QAction>
 #include <QIcon>
+#include <QClipboard>
 
 #include "OpenSSL.h"
 
@@ -24,6 +25,9 @@ public:
     ~Kauth();
 
     void initSysTray();
+
+private:
+    void showMessageError(QString e);
 
 private slots:
     void on_openButton_clicked();

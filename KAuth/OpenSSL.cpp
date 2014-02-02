@@ -18,7 +18,7 @@ void OpenSSL::checkPrivateKey(QString s){
     arguments << "rsa" << "-in" << s << "-check";
 
     openSSL->start(pathOpenSSL, arguments);
-    if (!openSSL->waitForStarted(-1))
+    if (!openSSL->waitForStarted())
         throw QString("Impossible de démarrer openssl");
 
     if (!openSSL->waitForFinished())
@@ -27,4 +27,29 @@ void OpenSSL::checkPrivateKey(QString s){
     if(openSSL->readAllStandardOutput().isEmpty()){
         throw QString("Clef privée invalide");
     }
+
+    privateKey = s;
 }
+
+/*Signer la string data en base 64*/
+QString OpenSSL::signer(QString data){
+    if(privateKey.isEmpty())
+        throw QString("Clef privée manquante");
+
+    QStringList arguments;
+    arguments << "dgst" << "-sha1" << "-sign" << privateKey;
+    openSSL->start(pathOpenSSL, arguments);
+
+    if (!openSSL->waitForStarted())
+        throw QString("Impossible de démarrer openssl");
+
+    openSSL->write(data.toLatin1().data());
+    openSSL->closeWriteChannel();
+
+    if (!openSSL->waitForFinished())
+        throw QString("Impossible de finir openssl");
+
+    QByteArray signature = openSSL->readAllStandardOutput().toBase64();
+    return QString(signature);
+}
+

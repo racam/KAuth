@@ -49,10 +49,7 @@ void Kauth::on_openButton_clicked()
             this->hide();
 
         }catch(QString const& e){
-            QMessageBox error;
-            error.setText(e);
-            error.setIcon(QMessageBox::Critical);
-            error.exec();
+            showMessageError(e);
         }
     }
 }
@@ -60,5 +57,30 @@ void Kauth::on_openButton_clicked()
 
 void Kauth::signerPressePapier()
 {
-    std::cout << "Presse papier signé" << std::endl;
+    QClipboard *pressePapier = QApplication::clipboard();
+
+    try{
+        QString data = pressePapier->text();
+        if(data.isEmpty())
+            throw QString("Le presse papier ne contient pas de texte");
+
+        QString res = ssl.signer(data);
+        showMessageError(res);
+
+    }catch(QString const& e){
+        showMessageError(e);
+    }
+}
+
+void Kauth::showMessageError(QString e){
+    if(this->isHidden())
+        QApplication::setQuitOnLastWindowClosed(false);
+
+    QMessageBox error(this);
+    error.setText(e);
+    error.setIcon(QMessageBox::Critical);
+    error.exec();
+
+    if(this->isHidden())
+        QApplication::setQuitOnLastWindowClosed(true);
 }

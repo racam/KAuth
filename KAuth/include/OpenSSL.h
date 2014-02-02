@@ -12,10 +12,12 @@ public:
     ~OpenSSL();
 
     void checkPrivateKey(QString s);
+    QString signer(QString data);
 
 private:
     QProcess *openSSL;
     QString pathOpenSSL;
+    QString privateKey;
 };
 
 #endif // OPENSSL_H
