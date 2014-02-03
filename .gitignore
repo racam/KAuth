@@ -1,6 +1,18 @@
 #################
 # KAuth
 #################
-build_MinGW_32bit/
+
+#Build
+build/*.h
+build/Makefile
+build/Makefile.Debug
+build/Makefile.Realase
+
+build/release/*.o
+build/debug/*.o
+
+###
+# Qt Creator
+###
 *.user*
 *.*~
