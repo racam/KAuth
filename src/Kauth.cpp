@@ -142,6 +142,12 @@ void Kauth::showMessageError(QString e){
         QApplication::setQuitOnLastWindowClosed(true);
 }
 
+/***
+* showMessageError() is a private function
+* Show an Qt error message with the 'e' string
+* QString e : the error message
+* Return void
+***/
 void Kauth::on_sslPathButton_clicked()
 {
     QString s = QFileDialog::getOpenFileName(this, tr("Chemin vers openssl"));
@@ -150,6 +156,8 @@ void Kauth::on_sslPathButton_clicked()
     if(!s.isNull()){
         try{
             if(ssl.checkPathOpenSSL(s)){
+                std::cout << "test" << std::endl;
+
                 ssl.setPathOpenSSL(s);
                 ui->sslPathButton->hide();
                 ui->openButton->setEnabled(true);

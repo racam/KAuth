@@ -124,7 +124,7 @@ bool OpenSSL::checkPathOpenSSL(QString path){
 
     //if the programme can run
     if(openSSL->waitForStarted()){
-
+        
         openSSL->close();
         return true;
     }else{
