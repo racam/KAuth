@@ -12,7 +12,7 @@
 ********************/
 
 
-#include "include/OpenSSL.h"
+#include "OpenSSL.h"
 
 OpenSSL::OpenSSL(QObject *parent):
     openSSL(new QProcess(parent)),

@@ -11,7 +11,7 @@
 * 
 ********************/
 
-#include "include/Kauth.h"
+#include "Kauth.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

@@ -11,7 +11,7 @@
 * 
 ********************/
 
-#include "include/Kauth.h"
+#include "Kauth.h"
 #include "ui_mainwindow.h"
 
 Kauth::Kauth(QWidget *parent) :
