@@ -22,6 +22,14 @@ Kauth::Kauth(QWidget *parent) :
     sticon(new QSystemTrayIcon(this))
 {
     ui->setupUi(this);
+
+    try{
+        ssl.initPathOpenSSL();
+        ui->sslPathButton->hide();
+        ui->openButton->setEnabled(true);
+    }catch(QString const& e){
+        showMessageError(e);
+    }
 }
 
 /*Destructor*/
@@ -132,4 +140,25 @@ void Kauth::showMessageError(QString e){
 
     if(this->isHidden())
         QApplication::setQuitOnLastWindowClosed(true);
+}
+
+void Kauth::on_sslPathButton_clicked()
+{
+    QString s = QFileDialog::getOpenFileName(this, tr("Chemin vers openssl"));
+
+    //If the user selected a file
+    if(!s.isNull()){
+        try{
+            if(ssl.checkPathOpenSSL(s)){
+                ssl.setPathOpenSSL(s);
+                ui->sslPathButton->hide();
+                ui->openButton->setEnabled(true);
+            }else{
+                throw QString("Executable invalid");
+            }
+
+        }catch(QString const& e){
+            showMessageError(e);
+        }
+    }
 }

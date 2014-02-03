@@ -42,10 +42,16 @@ public:
     ***/
     QString signer(QString data);
 
+    void initPathOpenSSL();
+
+    bool checkPathOpenSSL(QString path);
+
+    void setPathOpenSSL(QString p);
+
 private:
     QProcess *openSSL;
     QString pathOpenSSL;
-    QString privateKey;
+    QString pathToPrivateKey;
 };
 
 #endif // OPENSSL_H

@@ -74,6 +74,8 @@ private slots:
     ***/
     void signerPressePapier();
 
+    void on_sslPathButton_clicked();
+
 private:
     /*The main Qt Windows*/
     Ui::MainWindow *ui;

@@ -16,8 +16,7 @@
 
 /*Initialisation*/
 OpenSSL::OpenSSL(QObject *parent):
-    openSSL(new QProcess(parent)),
-    pathOpenSSL("bin/openssl.exe")
+    openSSL(new QProcess(parent))
 {
 }
 
@@ -52,7 +51,7 @@ void OpenSSL::checkPrivateKey(QString s){
     }
 
     //set the path of the private key
-    privateKey = s;
+    pathToPrivateKey = s;
 }
 
 /***
@@ -62,18 +61,18 @@ void OpenSSL::checkPrivateKey(QString s){
 * Return QString : the data digest (SHA1) sign with the privateKey and encode in base64
 ***/
 QString OpenSSL::signer(QString data){
-    if(privateKey.isEmpty())
+    if(pathToPrivateKey.isEmpty())
         throw QString("Clef privée manquante");
 
     QStringList arguments;
-    arguments << "dgst" << "-sha1" << "-sign" << privateKey;
+    arguments << "dgst" << "-sha1" << "-sign" << pathToPrivateKey;
     openSSL->start(pathOpenSSL, arguments);
 
     if (!openSSL->waitForStarted())
         throw QString("Impossible de démarrer openssl");
 
     //We write the data into the standard input and then close it
-    openSSL->write(data.toLatin1().data());
+    openSSL->write(data.toLocal8Bit().data());
     openSSL->closeWriteChannel();
 
     if (!openSSL->waitForFinished())
@@ -89,3 +88,32 @@ QString OpenSSL::signer(QString data){
     return QString(signature);
 }
 
+void OpenSSL::initPathOpenSSL(){
+    QStringList path;
+    path << "openssl" << "openssl.exe" << "bin/openssl.exe";
+
+    for (int i = 0; i < path.size(); ++i){
+        if(checkPathOpenSSL(path.at(i))){
+            pathOpenSSL = path.at(i);
+            break;
+        }
+    }
+
+    if(pathOpenSSL.isEmpty())
+        throw QString("Impossible de trouver openssl");
+}
+
+
+bool OpenSSL::checkPathOpenSSL(QString path){
+    openSSL->start(path);
+    if(openSSL->waitForStarted()){
+        openSSL->close();
+        return true;
+    }else{
+        return false;
+    }
+}
+
+void OpenSSL::setPathOpenSSL(QString p){
+    pathOpenSSL = p;
+}

@@ -12,39 +12,70 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>230</width>
-    <height>69</height>
+    <width>266</width>
+    <height>91</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>230</width>
-    <height>69</height>
+    <width>0</width>
+    <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>230</width>
-    <height>69</height>
+    <width>1380</width>
+    <height>690</height>
+   </size>
+  </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>1</width>
+    <height>1</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>1</width>
+    <height>1</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>KAuth</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="openButton">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>20</y>
-      <width>131</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Ouvrir ma clef privée...</string>
-    </property>
-   </widget>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Bienvenu sur K-Auth</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="sslPathButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="text">
+       <string>Chemin vers openssl...</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="openButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Ouvrir ma clef privée...</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
