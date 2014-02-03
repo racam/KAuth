@@ -21,3 +21,6 @@ HEADERS  += \
 
 FORMS    += \
     src/mainwindow.ui
+
+RESOURCES += \
+    src/ressources/systray.qrc

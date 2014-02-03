@@ -80,7 +80,7 @@ void Kauth::initSysTray(){
 ***/
 void Kauth::on_openButton_clicked()
 {
-    QString s = QFileDialog::getOpenFileName(this, tr("Ouvrir clef privée"), "/home");
+    QString s = QFileDialog::getOpenFileName(this, tr("Ouvrir clef privée"));
 
     //If the user selected a file
     if(!s.isNull()){
@@ -156,8 +156,6 @@ void Kauth::on_sslPathButton_clicked()
     if(!s.isNull()){
         try{
             if(ssl.checkPathOpenSSL(s)){
-                std::cout << "test" << std::endl;
-
                 ssl.setPathOpenSSL(s);
                 ui->sslPathButton->hide();
                 ui->openButton->setEnabled(true);
