@@ -1,3 +1,17 @@
+/********************
+* K-Auth project
+
+* File : OpenSSL.cpp
+* Summary : This is a model that provice an interface with openssl.exe
+* Required library : Qt v5.2
+*
+* Author : Maximilien DEFOURNE
+* Licence : GPL v3 (see file LICENCE)
+* Version : 0.5
+* 
+********************/
+
+
 #include "include/OpenSSL.h"
 
 OpenSSL::OpenSSL(QObject *parent):

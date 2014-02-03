@@ -1,3 +1,16 @@
+/********************
+* K-Auth project
+
+* File : Kauth.h
+* Summary : This is the controler-view of the project, the core of the application
+* Required library : Qt v5.2
+*
+* Author : Maximilien DEFOURNE
+* Licence : GPL v3 (see file LICENCE)
+* Version : 0.5
+* 
+********************/
+
 #ifndef KAUTH_H
 #define KAUTH_H
 
@@ -12,6 +25,7 @@
 
 #include "OpenSSL.h"
 
+//Namespace for ui file
 namespace Ui {
     class MainWindow;
 }
@@ -24,9 +38,22 @@ public:
     explicit Kauth(QWidget *parent = 0);
     ~Kauth();
 
+    /***
+    * initSysTray() function
+    * Load the programm into the Systray of the OS
+    * Pre-condition : a private key is load
+    * Return void
+    ***/
     void initSysTray();
 
 private:
+
+    /***
+    * showMessageError() function
+    * Load the programm into the Systray of the OS
+    * Pre-condition : a private key is load
+    * Return void
+    ***/
     void showMessageError(QString e);
 
 private slots:

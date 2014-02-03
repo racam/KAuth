@@ -1,3 +1,16 @@
+/********************
+* K-Auth project
+
+* File : Kauth.cpp
+* Summary : This is the controler-view of the project, the core of the application
+* Required library : Qt v5.2
+*
+* Author : Maximilien DEFOURNE
+* Licence : GPL v3 (see file LICENCE)
+* Version : 0.5
+* 
+********************/
+
 #include "include/Kauth.h"
 #include "ui_mainwindow.h"
 
