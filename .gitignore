@@ -2,5 +2,5 @@
 # KAuth
 #################
 build_MinGW_32bit/
-*.user.*
+*.user*
 *.*~

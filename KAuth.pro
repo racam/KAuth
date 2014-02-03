@@ -12,15 +12,13 @@ TARGET = KAuth
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-    OpenSSL.cpp \
-    Kauth.cpp
+SOURCES += src/main.cpp\
+    src/OpenSSL.cpp \
+    src/Kauth.cpp
 
 HEADERS  += \
-    OpenSSL.h \
-    Kauth.h \
-    include/Kauth.h \
-    include/OpenSSL.h
+    src/Kauth.h \
+    src/OpenSSL.h
 
 FORMS    += \
-    mainwindow.ui
+    src/mainwindow.ui

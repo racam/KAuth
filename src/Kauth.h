@@ -39,7 +39,7 @@ public:
     ~Kauth();
 
     /***
-    * initSysTray() function
+    * initSysTray() is a public function
     * Load the programm into the Systray of the OS
     * Pre-condition : a private key is load
     * Return void
@@ -49,15 +49,29 @@ public:
 private:
 
     /***
-    * showMessageError() function
-    * Load the programm into the Systray of the OS
-    * Pre-condition : a private key is load
+    * showMessageError() is a private function
+    * Show an Qt error message with the 'e' string
+    * QString e : the error message
     * Return void
     ***/
     void showMessageError(QString e);
 
 private slots:
+    
+    /***
+    * on_openButton_clicked() is a private slot (see Qt signal/slot)
+    * Trigger : this function will be call automatically when the button "openButton" is clicked
+    * Open a FileDialog (Qt) and check if the file is a valid private key. If yes the application is minimzed in the SysTray
+    * Return void
+    ***/
     void on_openButton_clicked();
+
+    /***
+    * signerPressePapier() is a private slot (see Qt signal/slot)
+    * Trigger : Show an Qt error message with the 'e' string
+    * QString e : the error message
+    * Return void
+    ***/
     void signerPressePapier();
 
 private:
