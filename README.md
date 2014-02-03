@@ -1,6 +1,10 @@
 K-Auth
 ======
 
+INSTALL & COMPILING
+-------------------
+See the file INSTALL (english only)
+
 
 [EN] What is K-Auth ?
 ----------------
@@ -12,7 +16,7 @@ K-Auth est un logiciel simple d'utilisation permettant une authentification Web.
 
 
 
-[EN] What doest it for ?
+[EN] What is it for ?
 -------------------
 Nowadays, Web authentification become less and less secure. Most of the passwords are the same and non-secure. If someone find your, there is a high probability that he can log into many website with your account.
 

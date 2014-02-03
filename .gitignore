@@ -2,17 +2,17 @@
 # KAuth
 #################
 
-#Build
-build/*.h
-build/Makefile
-build/Makefile.Debug
-build/Makefile.Realase
+### Build
 
-build/release/*.o
-build/debug/*.o
+build/*.h
+build/Makefile*
+
+build/release/*.*
+build/debug/*.*
 
 ###
 # Qt Creator
 ###
+
 *.user*
 *.*~
