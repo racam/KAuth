@@ -75,8 +75,13 @@ private slots:
     void signerPressePapier();
 
 private:
+    /*The main Qt Windows*/
     Ui::MainWindow *ui;
+
+    /*The openSSL interface*/
     OpenSSL ssl;
+
+    /*The SysTray configuration*/
     QSystemTrayIcon *sticon;
 
 };
