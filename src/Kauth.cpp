@@ -62,7 +62,7 @@ void Kauth::initSysTray(){
 
     sticon->setContextMenu(stmenu);
 
-    sticon->setIcon(QIcon("img/icon-key.png"));
+    sticon->setIcon(QIcon(":/icones/systray.png"));
 
 
     //Message and show
